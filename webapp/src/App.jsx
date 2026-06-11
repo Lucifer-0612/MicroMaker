@@ -42,21 +42,34 @@ function App() {
         </div>
         <div className="flex flex-col items-end space-y-3">
           <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.0</div>
-          <a
-            href="https://www.linkedin.com/in/ashutosh-kesarwani-b985aa313/"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center space-x-2 bg-[#FFDD00] text-black px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-[#ffea4c] transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-              <line x1="6" y1="1" x2="6" y2="4"></line>
-              <line x1="10" y1="1" x2="10" y2="4"></line>
-              <line x1="14" y1="1" x2="14" y2="4"></line>
-            </svg>
-            <span className="font-sans">CONNECT</span>
-          </a>
+          <div className="flex items-center space-x-3">
+            <a
+              href="https://github.com/Lucifer-0612/MicroMaker"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-2 bg-[#24292e] text-white px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-[#2f363d] transition-colors border border-slate-600"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              <span className="font-sans">Star on GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ashutosh-kesarwani-b985aa313/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-2 bg-[#FFDD00] text-black px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-[#ffea4c] transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+              <span className="font-sans">CONNECT</span>
+            </a>
+          </div>
         </div>
       </header>
 
