@@ -28,6 +28,7 @@ async function redis(...args) {
 
 export default async function handler(req, res) {
   // Only allow POST to prevent crawlers/prefetch from inflating the count
+  // Trigger Vercel Rebuild with env vars
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
