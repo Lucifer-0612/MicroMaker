@@ -36,15 +36,15 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <header className="w-full max-w-4xl flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
+      <header className="w-full max-w-4xl flex flex-col md:flex-row md:justify-between items-start md:items-end gap-4 md:gap-0 mb-8 border-b border-slate-700 pb-4">
         <div className="flex items-center space-x-4">
-          <img src="/logo-v3.png" alt="Micro Maker Logo" className="w-24 h-24" />
+          <img src="/logo-v3.png" alt="Micro Maker Logo" className="w-24 h-24 flex-shrink-0" />
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Micro Maker</h1>
             <p className="text-sm text-slate-400 mt-1 font-mono">Precision Strip-Booklet Impositioner</p>
           </div>
         </div>
-        <div className="flex flex-col items-end space-y-3">
+        <div className="flex flex-col items-start md:items-end space-y-3">
           <div className="flex items-center space-x-2">
             <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.0</div>
             {!countLoading && visitorCount !== null && (
