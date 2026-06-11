@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#0f172a" />
+  
+  <!-- Crop Mark Top-Left -->
+  <path d="M 10 14 L 20 14 M 14 10 L 14 20" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Crop Mark Top-Right -->
+  <path d="M 44 14 L 54 14 M 50 10 L 50 20" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Crop Mark Bottom-Left -->
+  <path d="M 10 50 L 20 50 M 14 44 L 14 54" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Crop Mark Bottom-Right -->
+  <path d="M 44 50 L 54 50 M 50 44 L 50 54" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Central 'M' for Micro Maker, designed like folded paper -->
+  <path d="M 18 44 L 18 24 L 32 38 L 46 24 L 46 44" fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

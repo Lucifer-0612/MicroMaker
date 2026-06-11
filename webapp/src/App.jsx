@@ -1,0 +1,137 @@
+import { useState } from 'react';
+import { UploadZone } from './components/UploadZone';
+import { LayoutPicker } from './components/LayoutPicker';
+import { ImpositionPreview } from './components/ImpositionPreview';
+import { DownloadSection } from './components/DownloadSection';
+
+function App() {
+  const [step, setStep] = useState('upload'); // 'upload' | 'configure' | 'generate'
+
+  // File data
+  const [pdfFile, setPdfFile] = useState(null);
+  const [pageCount, setPageCount] = useState(null);
+
+  // Configuration
+  const [gridConfig, setGridConfig] = useState({ rows: 2, cols: 3 }); // default 6-in-1
+  const [paperSize, setPaperSize] = useState('A4');
+  const [includeBorder, setIncludeBorder] = useState(false);
+  const [includePageNumbers, setIncludePageNumbers] = useState(false);
+
+  const handleUpload = (file, count) => {
+    setPdfFile(file);
+    setPageCount(count);
+    setStep('configure');
+  };
+
+  const handleRestart = () => {
+    setPdfFile(null);
+    setPageCount(null);
+    setStep('upload');
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <header className="w-full max-w-4xl flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
+        <div className="flex items-center space-x-4">
+          <img src="/logo-v3.png" alt="Micro Maker Logo" className="w-24 h-24" />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Micro Maker</h1>
+            <p className="text-sm text-slate-400 mt-1 font-mono">Precision Strip-Booklet Impositioner</p>
+          </div>
+        </div>
+        <div className="flex flex-col items-end space-y-3">
+          <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.0</div>
+          <a
+            href="https://www.linkedin.com/in/ashutosh-kesarwani-b985aa313/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-2 bg-[#FFDD00] text-black px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-[#ffea4c] transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+            <span className="font-sans">CONNECT</span>
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="w-full max-w-4xl flex-grow">
+        {/* Step Indicator */}
+        <div className="flex items-center space-x-4 mb-8 font-mono text-sm">
+          <div className={`flex items-center space-x-2 ${step === 'upload' ? 'text-safety-orange' : 'text-slate-500'}`}>
+            <span className={`border ${step === 'upload' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>1</span>
+            <span>UPLOAD</span>
+          </div>
+          <div className="text-slate-700">/</div>
+          <div className={`flex items-center space-x-2 ${step === 'configure' ? 'text-safety-orange' : 'text-slate-500'}`}>
+            <span className={`border ${step === 'configure' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>2</span>
+            <span>CONFIGURE</span>
+          </div>
+          <div className="text-slate-700">/</div>
+          <div className={`flex items-center space-x-2 ${step === 'generate' ? 'text-safety-orange' : 'text-slate-500'}`}>
+            <span className={`border ${step === 'generate' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>3</span>
+            <span>GENERATE</span>
+          </div>
+        </div>
+
+        {/* Dynamic Step Content */}
+        {step === 'upload' && (
+          <UploadZone onUpload={handleUpload} />
+        )}
+
+        {step === 'configure' && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-1">
+              <LayoutPicker
+                gridConfig={gridConfig}
+                onGridChange={setGridConfig}
+                paperSize={paperSize}
+                onPaperSizeChange={setPaperSize}
+                includeBorder={includeBorder}
+                onIncludeBorderChange={setIncludeBorder}
+                includePageNumbers={includePageNumbers}
+                onIncludePageNumbersChange={setIncludePageNumbers}
+                onContinue={() => setStep('generate')}
+                onBack={handleRestart}
+              />
+            </div>
+            <div className="lg:col-span-2">
+              <ImpositionPreview
+                pdfFile={pdfFile}
+                gridConfig={gridConfig}
+                pageCount={pageCount}
+                includeBorder={includeBorder}
+                includePageNumbers={includePageNumbers}
+              />
+            </div>
+          </div>
+        )}
+
+        {step === 'generate' && (
+          <DownloadSection
+            pdfFile={pdfFile}
+            gridConfig={gridConfig}
+            paperSize={paperSize}
+            includeBorder={includeBorder}
+            includePageNumbers={includePageNumbers}
+            onBack={() => setStep('configure')}
+            onRestart={handleRestart}
+          />
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full max-w-4xl mt-16 pt-8 border-t border-slate-700 text-center text-xs font-mono text-slate-500">
+        <p>Zero-backend processing. Your files never leave this browser.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
