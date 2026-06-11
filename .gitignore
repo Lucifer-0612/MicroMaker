@@ -60,3 +60,6 @@ webapp/test-pdflib*.cjs
 
 # Old logo versions
 webapp/public/logo-v2.png
+
+.vercel
+.env*

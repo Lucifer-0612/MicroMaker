@@ -2,5 +2,9 @@
   "buildCommand": "cd webapp && npm install && npm run build",
   "outputDirectory": "webapp/dist",
   "framework": null,
-  "installCommand": "echo 'Install handled in buildCommand'"
+  "installCommand": "echo 'Install handled in buildCommand'",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

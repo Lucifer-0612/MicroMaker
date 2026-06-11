@@ -3,6 +3,7 @@ import { UploadZone } from './components/UploadZone';
 import { LayoutPicker } from './components/LayoutPicker';
 import { ImpositionPreview } from './components/ImpositionPreview';
 import { DownloadSection } from './components/DownloadSection';
+import { useVisitorCount } from './hooks/useVisitorCount';
 
 function App() {
   const [step, setStep] = useState('upload'); // 'upload' | 'configure' | 'generate'
@@ -16,6 +17,9 @@ function App() {
   const [paperSize, setPaperSize] = useState('A4');
   const [includeBorder, setIncludeBorder] = useState(false);
   const [includePageNumbers, setIncludePageNumbers] = useState(false);
+
+  // Live visitor counter
+  const { count: visitorCount, isLoading: countLoading } = useVisitorCount();
 
   const handleUpload = (file, count) => {
     setPdfFile(file);
@@ -41,7 +45,19 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col items-end space-y-3">
-          <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.0</div>
+          <div className="flex items-center space-x-2">
+            <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.0</div>
+            {!countLoading && visitorCount !== null && (
+              <div className="flex items-center space-x-1.5 text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-green-400">{visitorCount.toLocaleString()}</span>
+                <span className="text-slate-400">visitors</span>
+              </div>
+            )}
+          </div>
           <div className="flex items-center space-x-3">
             <a
               href="https://github.com/Lucifer-0612/MicroMaker"
