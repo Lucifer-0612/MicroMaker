@@ -27,6 +27,19 @@ export default {
         'xl': '0px',
         '2xl': '0px',
         '3xl': '0px',
+      },
+      keyframes: {
+        swing: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '5%': { transform: 'rotate(15deg)' },
+          '10%': { transform: 'rotate(-10deg)' },
+          '15%': { transform: 'rotate(5deg)' },
+          '20%': { transform: 'rotate(-2deg)' },
+          '25%': { transform: 'rotate(0deg)' },
+        }
+      },
+      animation: {
+        swing: 'swing 6s ease-in-out infinite',
       }
     },
   },

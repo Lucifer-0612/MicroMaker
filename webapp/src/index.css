@@ -27,3 +27,19 @@
     @apply bg-slate-900 border border-slate-700 text-slate-50 px-3 py-2 font-mono focus:border-safety-orange focus:outline-none transition-colors;
   }
 }
+
+@layer utilities {
+  @keyframes custom-swing {
+    0%, 100% { transform: rotate(0deg); }
+    5% { transform: rotate(25deg); }
+    10% { transform: rotate(-20deg); }
+    15% { transform: rotate(10deg); }
+    20% { transform: rotate(-5deg); }
+    25% { transform: rotate(0deg); }
+  }
+
+  .animate-custom-swing {
+    animation: custom-swing 6s ease-in-out infinite;
+    transform-origin: top center;
+  }
+}
