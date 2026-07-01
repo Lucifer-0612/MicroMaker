@@ -151,13 +151,13 @@ export function ImpositionPreview({ pdfFile, gridConfig, pageCount, includeBorde
   return (
     <div className="panel p-6 h-full flex flex-col">
       <div className="flex justify-between items-center mb-4">
-         <h3 className="text-xs font-bold font-mono text-slate-400 tracking-widest uppercase">Layout Preview</h3>
-         <span className="text-xs font-mono bg-slate-900 border border-slate-700 px-2 py-1 text-safety-orange">
+         <h3 className="text-xs font-bold font-mono text-vanilla-text/60 dark:text-slate-400 tracking-widest uppercase">Layout Preview</h3>
+         <span className="text-xs font-mono bg-white dark:bg-slate-900 border border-vanilla-border dark:border-slate-700 px-2 py-1 text-vanilla-gold dark:text-safety-orange">
            {layout.length} Output {layout.length === 1 ? 'Sheet' : 'Sheets'} Required
          </span>
       </div>
       
-      <div className="flex-grow bg-slate-900 border border-slate-700 flex items-center justify-center p-4 min-h-[400px]">
+      <div className="flex-grow bg-white dark:bg-slate-900 border border-vanilla-border dark:border-slate-700 flex items-center justify-center p-4 min-h-[400px]">
         <canvas 
           ref={canvasRef} 
           width={800} 
