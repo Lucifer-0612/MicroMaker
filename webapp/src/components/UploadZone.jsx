@@ -66,19 +66,19 @@ export function UploadZone({ onUpload }) {
   return (
     <div className="w-full">
       <div 
-        className={`panel flex flex-col items-center justify-center p-16 border-2 border-dashed transition-colors ${
-          isDragging ? 'border-safety-orange bg-slate-800/80' : 'border-slate-600 hover:border-slate-500'
+        className={`panel flex flex-col items-center justify-center p-8 sm:p-16 border-2 border-dashed transition-all duration-300 ${
+          isDragging ? 'border-vanilla-gold dark:border-safety-orange bg-vanilla-panel dark:bg-slate-800/80 shadow-[0_0_15px_rgba(226,172,62,0.3)] dark:shadow-[0_0_15px_rgba(224,122,47,0.3)]' : 'border-vanilla-border dark:border-slate-600 hover:border-vanilla-gold dark:hover:border-safety-orange hover:bg-vanilla-panel dark:hover:bg-slate-800 hover:shadow-[0_0_15px_rgba(226,172,62,0.3)] dark:hover:shadow-[0_0_15px_rgba(224,122,47,0.3)]'
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-slate-500 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-vanilla-text/40 dark:text-slate-500 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
         
         <h2 className="text-xl font-medium mb-2">Drop your PDF here</h2>
-        <p className="text-sm text-slate-400 mb-8 font-mono">Max size: Unlimited (Processed locally)</p>
+        <p className="text-sm text-vanilla-text/60 dark:text-slate-400 mb-8 font-mono">Max size: Unlimited (Processed locally)</p>
         
         <button 
           className="btn-primary"
@@ -98,7 +98,7 @@ export function UploadZone({ onUpload }) {
       </div>
       
       {error && (
-        <div className="mt-4 p-4 border border-red-900 bg-red-950/30 text-red-400 font-mono text-sm">
+        <div className="mt-4 p-4 border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-mono text-sm">
           ERROR: {error}
         </div>
       )}

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,12 +8,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'slate-900': '#0c1017', // background
-        'slate-800': '#141a24', // surface
-        'slate-700': '#2a3444', // border-soft
-        'slate-600': '#3d4a5c', // border-hard
-        'safety-orange': '#e07a2f', // accent
-        'slate-50': '#e8ecf1', // text-primary
+        'slate-900': '#0c1017', // dark background
+        'slate-800': '#141a24', // dark surface
+        'slate-700': '#2a3444', // dark border-soft
+        'slate-600': '#3d4a5c', // dark border-hard
+        'safety-orange': '#e07a2f', // dark accent
+        'slate-50': '#e8ecf1', // dark text-primary
+        
+        // Light Mode (Vanilla Cream)
+        'vanilla-bg': '#FFFDE7',
+        'vanilla-panel': '#FDFBF0',
+        'vanilla-gold': '#E2AC3E',
+        'vanilla-bronze': '#8E6B2A',
+        'vanilla-text': '#372A1B',
+        'vanilla-border': '#EAE1CE', // For subtle borders
       },
       fontFamily: {
         ui: ['Outfit', 'sans-serif'],

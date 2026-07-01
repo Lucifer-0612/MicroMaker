@@ -6,25 +6,25 @@
 
 @layer base {
   body {
-    @apply bg-slate-900 text-slate-50 font-ui antialiased;
+    @apply bg-vanilla-bg text-vanilla-text dark:bg-slate-900 dark:text-slate-50 font-ui antialiased transition-colors duration-300;
   }
 }
 
 @layer components {
   .panel {
-    @apply bg-slate-800 border border-slate-700 shadow-none;
+    @apply bg-vanilla-panel dark:bg-slate-800 border border-vanilla-border dark:border-slate-700 shadow-sm dark:shadow-none;
   }
   .panel-active {
-    @apply border-safety-orange;
+    @apply border-vanilla-gold dark:border-safety-orange;
   }
   .btn-primary {
-    @apply bg-safety-orange text-slate-900 font-medium px-4 py-2 hover:bg-opacity-90 transition-opacity;
+    @apply bg-vanilla-gold dark:bg-safety-orange text-white dark:text-slate-900 font-medium px-4 py-2 hover:bg-opacity-90 transition-opacity;
   }
   .btn-secondary {
-    @apply bg-transparent border border-slate-600 text-slate-50 px-4 py-2 hover:border-slate-50 transition-colors;
+    @apply bg-transparent border border-vanilla-border dark:border-slate-600 text-vanilla-text dark:text-slate-50 px-4 py-2 hover:border-vanilla-gold hover:text-vanilla-gold hover:bg-white dark:hover:border-slate-50 dark:hover:text-slate-50 dark:hover:bg-transparent transition-colors;
   }
   .input-field {
-    @apply bg-slate-900 border border-slate-700 text-slate-50 px-3 py-2 font-mono focus:border-safety-orange focus:outline-none transition-colors;
+    @apply bg-vanilla-bg dark:bg-slate-900 border border-vanilla-border dark:border-slate-700 text-vanilla-text dark:text-slate-50 px-3 py-2 font-mono focus:border-vanilla-gold dark:focus:border-safety-orange focus:outline-none transition-colors;
   }
 }
 

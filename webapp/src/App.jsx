@@ -5,6 +5,8 @@ import { ImpositionPreview } from './components/ImpositionPreview';
 import { DownloadSection } from './components/DownloadSection';
 import DotField from './components/DotField';
 import { useVisitorCount } from './hooks/useVisitorCount';
+import { useTheme } from './hooks/useTheme';
+import { ThemeToggle } from './components/ThemeToggle';
 
 function App() {
   const [step, setStep] = useState('upload'); // 'upload' | 'configure' | 'generate'
@@ -22,6 +24,9 @@ function App() {
   // Live visitor counter
   const { count: visitorCount, isLoading: countLoading } = useVisitorCount();
 
+  // Theme toggle
+  const { theme, toggleTheme } = useTheme();
+
   const handleUpload = (file, count) => {
     setPdfFile(file);
     setPageCount(count);
@@ -35,40 +40,43 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-slate-900 text-slate-100">
+    <div className="relative min-h-screen w-full bg-vanilla-bg text-vanilla-text dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
       <div className="fixed inset-0 z-0 pointer-events-auto">
         <DotField
           dotRadius={1.5}
           dotSpacing={29}
+          gradientFrom={theme === 'dark' ? '#F97316' : '#E2AC3E'}
+          gradientTo={theme === 'dark' ? 'rgba(180, 151, 207, 0.25)' : '#E2AC3E'}
+          glowColor={theme === 'dark' ? '#120F17' : '#FFFFFF'}
           bulgeStrength={67}
           glowRadius={80}
           sparkle={false}
           waveAmplitude={0}
           cursorForce={0.04}
-          gradientFrom="#F97316"
         />
       </div>
       <div className="relative z-10 min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 pointer-events-none [&>*]:pointer-events-auto">
         {/* Header */}
-      <header className="w-full max-w-4xl flex flex-col md:flex-row md:justify-between items-start md:items-end gap-4 md:gap-0 mb-8 border-b border-slate-700 pb-4">
+      <header className="w-full max-w-4xl flex flex-col md:flex-row md:justify-between items-start md:items-end gap-4 md:gap-0 mb-8 border-b border-vanilla-border dark:border-slate-700 pb-4">
         <div className="flex items-center space-x-4">
           <img src="/logo-v3.png" alt="Micro Maker Logo" className="w-24 h-24 flex-shrink-0" />
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Micro Maker</h1>
-            <p className="text-sm text-slate-400 mt-1 font-mono">Precision Strip-Booklet Impositioner</p>
+            <p className="text-sm text-vanilla-text/70 dark:text-slate-400 mt-1 font-mono">Precision Strip-Booklet Impositioner</p>
           </div>
         </div>
         <div className="flex flex-col items-start md:items-end space-y-3">
           <div className="flex items-center space-x-2">
-            <div className="text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">v1.0.1</div>
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <div className="text-xs font-mono bg-vanilla-panel dark:bg-slate-800 border border-vanilla-border dark:border-slate-700 px-2 py-1 rounded">v1.0.1</div>
             {!countLoading && visitorCount !== null && (
-              <div className="flex items-center space-x-1.5 text-xs font-mono bg-slate-800 border border-slate-700 px-2 py-1">
+              <div className="flex items-center space-x-1.5 text-xs font-mono bg-vanilla-panel dark:bg-slate-800 border border-vanilla-border dark:border-slate-700 px-2 py-1 rounded">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span className="text-green-400">{visitorCount.toLocaleString()}</span>
-                <span className="text-slate-400">visitors</span>
+                <span className="text-green-600 dark:text-green-400">{visitorCount.toLocaleString()}</span>
+                <span className="text-slate-600 dark:text-slate-400">visitors</span>
               </div>
             )}
           </div>
@@ -77,7 +85,7 @@ function App() {
               href="https://github.com/Lucifer-0612/MicroMaker"
               target="_blank"
               rel="noreferrer"
-              className="relative group flex items-center space-x-2 bg-[#24292e] text-white px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-[#2f363d] transition-colors border border-slate-600"
+              className="relative group flex items-center space-x-2 bg-vanilla-panel dark:bg-[#24292e] text-vanilla-text dark:text-white px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-white dark:hover:bg-[#2f363d] transition-colors border border-vanilla-border dark:border-slate-600"
             >
               <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-10 h-10 z-20 pointer-events-none transition-transform group-hover:scale-110 group-hover:-rotate-3">
                 <div className="w-full h-full animate-custom-swing">
@@ -111,19 +119,19 @@ function App() {
       {/* Main Content */}
       <main className="w-full max-w-4xl flex-grow">
         {/* Step Indicator */}
-        <div className="flex items-center space-x-4 mb-8 font-mono text-sm">
-          <div className={`flex items-center space-x-2 ${step === 'upload' ? 'text-safety-orange' : 'text-slate-500'}`}>
-            <span className={`border ${step === 'upload' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>1</span>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-8 font-mono text-xs sm:text-sm w-full">
+          <div className={`flex items-center space-x-2 ${step === 'upload' ? 'text-vanilla-gold dark:text-safety-orange' : 'text-vanilla-text/50 dark:text-slate-500'}`}>
+            <span className={`border ${step === 'upload' ? 'border-vanilla-gold dark:border-safety-orange' : 'border-vanilla-border dark:border-slate-500'} px-2 py-0.5`}>1</span>
             <span>UPLOAD</span>
           </div>
-          <div className="text-slate-700">/</div>
-          <div className={`flex items-center space-x-2 ${step === 'configure' ? 'text-safety-orange' : 'text-slate-500'}`}>
-            <span className={`border ${step === 'configure' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>2</span>
+          <div className="text-vanilla-border dark:text-slate-700">/</div>
+          <div className={`flex items-center space-x-2 ${step === 'configure' ? 'text-vanilla-gold dark:text-safety-orange' : 'text-vanilla-text/50 dark:text-slate-500'}`}>
+            <span className={`border ${step === 'configure' ? 'border-vanilla-gold dark:border-safety-orange' : 'border-vanilla-border dark:border-slate-500'} px-2 py-0.5`}>2</span>
             <span>CONFIGURE</span>
           </div>
-          <div className="text-slate-700">/</div>
-          <div className={`flex items-center space-x-2 ${step === 'generate' ? 'text-safety-orange' : 'text-slate-500'}`}>
-            <span className={`border ${step === 'generate' ? 'border-safety-orange' : 'border-slate-500'} px-2 py-0.5`}>3</span>
+          <div className="text-vanilla-border dark:text-slate-700">/</div>
+          <div className={`flex items-center space-x-2 ${step === 'generate' ? 'text-vanilla-gold dark:text-safety-orange' : 'text-vanilla-text/50 dark:text-slate-500'}`}>
+            <span className={`border ${step === 'generate' ? 'border-vanilla-gold dark:border-safety-orange' : 'border-vanilla-border dark:border-slate-500'} px-2 py-0.5`}>3</span>
             <span>GENERATE</span>
           </div>
         </div>
@@ -175,7 +183,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full max-w-4xl mt-16 pt-8 border-t border-slate-700 text-center text-xs font-mono text-slate-500">
+      <footer className="w-full max-w-4xl mt-16 pt-8 border-t border-vanilla-border dark:border-slate-700 text-center text-xs font-mono text-vanilla-text/60 dark:text-slate-500">
         <p>Zero-backend processing. Your files never leave this browser.</p>
       </footer>
       </div>
