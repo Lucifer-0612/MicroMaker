@@ -122,7 +122,7 @@ Contributions are welcome! Here's how you can help:
 - [ ] Drag-and-drop page reordering
 - [ ] Saddle-stitch booklet imposition
 - [ ] Margin/bleed controls
-- [ ] Dark/light theme toggle
+- [x] Dark/light theme toggle
 - [ ] PWA support for offline use
 - [ ] i18n / multi-language support
 
